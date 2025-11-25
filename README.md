@@ -29,13 +29,11 @@ public int hashCode() {
 
 ```java
 public double anioActual (double precioBase, int anioActual ) {
-    // Calcular depreciación por años de uso
+   
     double deprecAño = this.anioActual * 0.12;
 
-    // Calcular depreciación por desgaste tipico
     double deprecAdic = this.anioActual * 0.15;
 
-    // Calcular costo final
     double PrecioVenta = deprecAño * (1 + deprecAño);
     return costoConEdad * (1 - deprecAdic);
 }
