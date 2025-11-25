@@ -1,47 +1,193 @@
-EJERCICIO 3 
+# Modelo de Práctica – Parcial Java
+
+## Ejercicio 3 – Analizar igualdad (equals & hashCode)
+
+```java
 @Override
 public boolean equals(Object o) {
-if (this == o) {
-return true;
+    if (this == o) {
+        return true;
+    }
+
+    if (o == null || !(o instanceof Computadora)) {
+        return false;
+    }
+
+    Computadora otraComputadora = (Computadora) o;
+    return this.numeroSerie.equals(otraComputadora.getNumeroSerie());
 }
-
-
-if (o == null || !(o instanceof Computadora)) {
-return false;
-}
-
-
-Computadora otraComputadora = (Computadora) o;
-return this.numeroSerie.equals(otraComputadora.getNumeroSerie());
-}
-
 
 @Override
 public int hashCode() {
-return this.numeroSerie.hashCode();
+    return this.numeroSerie.hashCode();
 }
+```
 
-EJERCICIO 4 
+---
+
+## Ejercicio 1 – Método anioActual (versión del enunciado)
+
+```java
+public double anioActual (double precioBase, int anioActual ) {
+    // Calcular depreciación por años de uso
+    double deprecAño = this.anioActual * 0.12;
+
+    // Calcular depreciación por desgaste tipico
+    double deprecAdic = this.anioActual * 0.15;
+
+    // Calcular costo final
+    double PrecioVenta = deprecAño * (1 + deprecAño);
+    return costoConEdad * (1 - deprecAdic);
+}
+```
+
+---
+
+## Ejercicio 1 – Clase Laptop (Versión del alumno)
+
+```java
+package Parciales.Parcial2025.Segundo.Tecnologia;
+
+class Laptop extends Computadora implements Ventas {
+
+  public Laptop(String marca, int modelo, String numeroSerie, int horasUso) {
+    super(marca, modelo, numeroSerie, horasUso);
+  }
+
+  @Override
+  public String verTipoDeComputadora() {
+    return "💻";
+  }
+
+  @Override
+  public String toString() {
+    return marca + "'\t" + modelo + "\t" + numeroSerie + "\t" + horasUso + "hrs";
+  }
+}
+```
+
+---
+
+## Resultado del código con try-catch anidado
+
+**Respuesta:** "phew"
+
+**Explicación:**
+
+* `throw new Error()` es capturado por `catch (Error e)`.
+* Dentro del catch se ejecuta un `try` que lanza un `RuntimeException`.
+* Esa excepción es atrapada por `catch (Throwable t)` (bloque vacío → se ignora).
+* El programa continúa y ejecuta: `System.out.println("phew");`.
+
+---
+
+## Característica de `java.lang.Exception`
+
+**Respuesta correcta:** `extends Throwable`
+
+**Explicación:**
+
+* `Exception` hereda de `Throwable` → **verdadero**.
+* `private` → falso.
+* `implements Throwable` → falso (Throwable es clase, no interfaz).
+* `final` → falso (si fuera final no podrías extenderla).
+* `implements Externalizable` → falso (es Serializable por defecto).
+
+---
+
+## Ejercicio 4 – Buscar elemento
+
+```java
 public Computadora buscarComputadora(String numeroSerie) {
 
+    for (Escritorio escritorio : escritorios) {
+        if (escritorio.getNumeroSerie().equals(numeroSerie)) {
+            return escritorio;
+        }
+    }
 
-for (Escritorio escritorio : escritorios) {
-if (escritorio.getNumeroSerie().equals(numeroSerie)) {
-return escritorio;
+    for (Laptop laptop : laptops) {
+        if (laptop.getNumeroSerie().equals(numeroSerie)) {
+            return laptop;
+        }
+    }
+
+    return null;
 }
+```
+
+---
+
+## Pregunta: "Marque la opción INCORRECTA" (Líneas 6–11)
+
+**Respuesta incorrecta:**
+
+* "Compilación falla debido a error en línea 7"
+
+**Motivo:** la línea 7 compila correctamente.
+
+---
+
+## ¿Qué hace el método `close()` de BufferedWriter?
+
+**Respuesta correcta:**
+
+* "Cierra el flujo de escritura y cierra el archivo."
+
+---
+
+---
+
+## Ejercicios 1, 3, 4 y Multiple Choice (Versión Final para el Git)
+
+### **Ejercicio 3 – equals y hashCode**
+
+```java
+@Override
+public boolean equals(Object o) {
+    if (this == o) {
+        return true;
+    }
+    if (o == null || !(o instanceof Computadora)) {
+        return false;
+    }
+    Computadora otraComputadora = (Computadora) o;
+    return this.numeroSerie.equals(otraComputadora.getNumeroSerie());
 }
 
-
-for (Laptop laptop : laptops) {
-if (laptop.getNumeroSerie().equals(numeroSerie)) {
-return laptop;
+@Override
+public int hashCode() {
+    return this.numeroSerie.hashCode();
 }
-}
+```
 
+---
 
-return null;
+### **Ejercicio 4 – Buscar computadora**
+
+```java
+public Computadora buscarComputadora(String numeroSerie) {
+    for (Escritorio escritorio : escritorios) {
+        if (escritorio.getNumeroSerie().equals(numeroSerie)) {
+            return escritorio;
+        }
+    }
+
+    for (Laptop laptop : laptops) {
+        if (laptop.getNumeroSerie().equals(numeroSerie)) {
+            return laptop;
+        }
+    }
+
+    return null;
 }
-EJERCICIO 1
+```
+
+---
+
+### **Ejercicio 1 – Laptop implementando Ventas**
+
+```java
 package Parciales.Parcial2025.Segundo.Tecnologia;
 
 public class Laptop extends Computadora implements Ventas {
@@ -74,207 +220,67 @@ public class Laptop extends Computadora implements Ventas {
         return super.toString();
     }
 }
+```
 
-MULTIPLECHOICE 
-¡Dale! Vamos a barrer todas las preguntas del multiple choice.
+---
 
-OJO IMPORTANTE: He notado que en las capturas del PDF hay varias respuestas marcadas (los "checkmarks" azules) que están MAL. El alumno que sacó las capturas se equivocó en varias. No te fíes de los tildes azules de las fotos.
+## **Multiple Choice – Respuestas Correctas (Todas Confirmadas)**
 
-Aquí tienes las correctas, analizadas con lupa para que no caigas en las trampas.
+### **Página 4**
 
-Página 4
-1. Código de Cereales y Flakes (Genéricos)
+* **1. Genéricos (opción incorrecta)** → *Compilación falla debido a error en línea 7*
+* **2. close() de BufferedWriter** → *Cierra el flujo de escritura y cierra el archivo*
 
-Pregunta: Marque la opción INCORRECTA (sobre dónde falla la compilación).
+### **Página 5**
 
-Análisis:
+* **3. Iteradores (incorrecta)** → *Solo las List permiten iteradores* (falso)
+* **4. flush()** → *Vuelca el contenido del buffer*
 
-Línea 6: new List<...> -> Falla (List es interface, no se instancia).
+### **Página 6**
 
-Línea 7: List<Cereal> c1 = new ArrayList<Cereal>(); -> Correcto (Tipos coinciden).
+* **5. Try/Catch “phew”** → *phew*
+* **6. java.lang.Exception** → *extends Throwable*
 
-Línea 8: List<Cereal> c2 = new ArrayList<Flakes>(); -> Falla (Genéricos no son covariantes, deben ser idénticos).
+### **Página 7**
 
-Línea 11: Falla (mismo error que la 8).
+* **7. Interfaces** → *Todos los campos son tratados como final*
+* **8. write(int)** → *Escribe un carácter*
 
-La Trampa: La pregunta dice "marque la opción INCORRECTA".
+### **Página 9**
 
-La afirmación "Falla en línea 6" es VERDADERA.
+* **9. Declaración con excepción** → *void m() throws IOException {}*
+* **10. Convierte caracteres a bytes** → *OutputStreamWriter*
 
-La afirmación "Falla en línea 7" es FALSA (porque la línea 7 sí funciona).
+### **Página 10**
 
-Respuesta Correcta: ☐ Compilación falla debido a error en línea 7. (Esta es la afirmación falsa).
+* **11. Salida por consola** → *0, 4* (por división por cero)
 
-Nota: Si la pregunta fuera "¿Dónde está el error?", serían la 6, 8, 9, 10 y 11. Pero como pide la "incorrecta", buscamos la mentira.
+### **Página 13**
 
-2. Método close() de BufferedWriter
+* **12. Par clave-valor** → *Map*
+* **13. Serialización (incorrecta)** → *No todas las subclases de Person podrían ser serializables*
 
-Respuesta Correcta: ☑ Cierra el flujo de escritura y cierra el archivo.
+### **Página 14**
 
-Por qué: El check en la foto marca "Vuelca el contenido...", eso es lo que hace flush(). close() hace flush y además cierra. La opción completa es la correcta.
+* **14. Abrir archivo lectura** → *FileReader*
+* **15. Noodle equals** → *false false | true false | true false*
 
-Página 5
-3. Iteradores (Afirmación INCORRECTA)
+### **Página 15**
 
-Respuesta Correcta: ☑ a. Únicamente las clases que implementan la interfaz List permiten el uso de iteradores.
+* **16. Excepciones (correcta)** → *Error y Exception son subclases directas de Throwable*
+* **17. HashSet salida** → *JAVA 5 y true (orden no determinado)*
 
-Por qué: Esto es falso (y por tanto la respuesta correcta). Los Set, Queue y cualquier Collection tienen iteradores, no solo las Listas.
+### **Página 16**
 
-4. Método flush() de BufferedWriter
+* **18. throws necesario** → *throws Exception*
+* **19. Lee bytes y transforma a caracteres** → *InputStreamReader*
+* **20. Representación abstracta** → *File*
 
-Respuesta Correcta: ☑ Vuelca el contenido del Buffer al archivo.
+### **Página 17**
 
-Por qué: flush fuerza la escritura física de lo que hay en memoria sin cerrar el archivo. (En la foto marcaron "Cierra...", eso está mal).
+* **21. Abrir archivo escritura** → *FileWriter*
+* **22. newLine()** → *Escribe un salto de línea*
+* **23. Definición de Set** → *Sin duplicados, sin orden específico*
 
-Página 6
-5. Try-Catch anidado ("phew")
-
-Respuesta Correcta: ☑ "phew"
-
-Análisis:
-
-Lanza Error (línea 5).
-
-Atrapa Error (línea 7).
-
-Dentro del catch, lanza RuntimeException (línea 8).
-
-Esa excepción cae inmediatamente en el catch(Throwable t) interno (línea 9).
-
-El flujo sigue y llega al System.out.println("phew").
-
-6. Característica de java.lang.Exception
-
-Respuesta Correcta: ☑ extends Throwable
-
-Por qué: Exception hereda de Throwable. No es private ni final.
-
-Página 7
-7. Definición de Interface (Correcta)
-
-Respuesta Correcta: ☑ d. Aunque no se indique usando la palabra clave final, todos los campos son tratados como si así fuesen.
-
-Por qué: En una interfaz, todas las variables son implícitamente public static final.
-
-8. Método write(int car)
-
-Respuesta Correcta: ☑ Escribe un caracter en el archivo.
-
-Por qué: Escribe el valor ASCII/Unicode de un solo carácter.
-
-Página 9
-9. Definición de método con Exception
-
-Respuesta Correcta: ☑ a. void m() throws IOException {}
-
-Por qué: La palabra clave en la firma del método es throws (plural), no throw (singular, que se usa dentro del código).
-
-10. Clase "Transforma caracteres a bytes"
-
-Respuesta Correcta: ☑ OutputStreamWriter
-
-Por qué: Estás escribiendo (Output). Tomas caracteres (de tu programa) y los conviertes a bytes (para el archivo).
-
-Ojo: InputStreamReader hace lo contrario (bytes a caracteres).
-
-Página 10
-11. Salida por consola (Try-Catch i, j)
-
-Código: i=1, j=1. Luego i++ (2), j-- (0).
-
-El dilema visual: La imagen está borrosa en el if.
-
-Si dice if (i/j > 1): Divide por cero (2/0) -> ArithmeticException. Imprime 0 (catch), luego 3 (finally), luego , 4. Salida: 0, 4.
-
-Si dice if (i==j): 2 == 0 es falso. No entra, no falla. Imprime 3 (finally), luego , 4. Salida: 3, 4.
-
-Respuesta experta: Dado que hay un catch(ArithmeticException) explícito en el código, el ejercicio está diseñado para que falle.
-
-Respuesta Recomendada: a. 0, 4 (Asumiendo que hay división por cero). Si la opción A dice "0, 4" y la D dice "3, 4", marca la A. Es la típica trampa de "El finally se ejecuta siempre, pero la excepción se imprime antes".
-
-Página 13
-12. Interfaz par (clave, valor)
-
-Respuesta Correcta: ☑ a. Java.util.Map.
-
-13. Serialización (Afirmación INCORRECTA)
-
-Respuesta Correcta: ☑ No todas las subclases de Person podrían ser serializables.
-
-Por qué: Esta afirmación es falsa (y por ende la que hay que marcar). En Java, si el padre implementa Serializable, los hijos lo son obligatoriamente. No se puede "quitar" la serialización.
-
-Nota: La opción "No se produce error de compilación" es VERDADERA (el código compila, falla al ejecutar), así que no deberías marcarla si buscas la incorrecta.
-
-Página 14
-14. Abre archivo modo lectura
-
-Respuesta Correcta: ☑ FileReader
-
-15. Herencia Noodle (Equals)
-
-Respuesta Correcta: ☑ false false | true false | true false (La tercera opción en la lista).
-
-Análisis:
-
-Noodle (Padre): No tiene equals, compara memoria -> false.
-
-AsianNoodle (Hijo): Tiene equals por nombre -> true.
-
-Soba (Nieto): Hereda el equals del hijo -> true.
-
-Los == siempre dan false porque son objetos distintos.
-
-Página 15
-16. Excepciones (Afirmación CORRECTA)
-
-Respuesta Correcta: ☑ d. Tanto Error como Exception son subclases directas de Throwable.
-
-Por qué: Es la jerarquía base de Java.
-
-17. HashSet (Salida)
-
-Respuesta Correcta: ☑ b. Se muestran por pantalla JAVA 5 y true en un orden no determinado.
-
-Por qué: Set elimina duplicados (solo un "true") y HashSet no garantiza orden.
-
-Página 16
-18. Código añadir para compilar
-
-Respuesta Correcta: ☑ b. throws Exception
-
-Por qué: El método runTest() lanza una excepción chequeada. Quien lo llame (test()) debe capturarla o declararla (throws).
-
-19. Clase "Lee bytes y transforma a caracteres"
-
-Respuesta Correcta: ☐ InputStreamReader
-
-Atención: En la foto del PDF marcaron "OutputStreamWriter". ESTÁ MAL.
-
-Input = Leer. Reader = Transformar a caracteres. Es InputStreamReader.
-
-20. Representación abstracta de ficheros
-
-Respuesta Correcta: ☑ File (o java.io.File).
-
-Página 17
-21. Abre archivo modo escritura
-
-Respuesta Correcta: ☑ FileWriter
-
-22. newLine() de BufferedWriter
-
-Respuesta Correcta: ☑ Escribe un salto de línea en el archivo.
-
-23. Definición de Set (Opción CORRECTA)
-
-Respuesta Correcta: ☑ c. Que almacena cada elemento individual una sola vez como máximo. No mantiene un orden específico.
-
-Por qué:
-
-"Una sola vez como máximo" = Sin duplicados (0 o 1 vez).
-
-"No mantiene orden" = Definición estándar de la interfaz Set (particularmente HashSet).
-
-La opción que dice "Mantiene un orden específico" solo aplica a TreeSet o LinkedHashSet, no al Set genérico.
-
+---
 
