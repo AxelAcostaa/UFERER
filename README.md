@@ -280,10 +280,123 @@ public class Laptop extends Computadora implements Ventas {
 * **22. newLine()** → *Escribe un salto de línea*
 * **23. Definición de Set** → *Sin duplicados, sin orden específico*
 
+# 📝 Solucionario Multiple Choice - 2do Parcial JAVA (Tema B)
+
+Este documento contiene las respuestas correctas y justificadas para las preguntas de selección múltiple del examen **TEMA B**.
+
 ---
 
-EJERCICIO 3 @Override public boolean equals(Object o) { if (this == o) { return true; } if (o == null || !(o instanciade Computadora)) { return false; } Computadora otraComputadora = (Computadora) o; return this.numeroSerie.equals(otraComputadora.getNumeroSerie()); } @Override public int hashCode() { return this.numeroSerie.hashCode(); }
-EJERCICIO 4 public Computadora buscarComputadora(String numeroSerie) { for (Escritorio escritorio : escritorios) { if (escritorio.getNumeroSerie().equals(numeroSerie)) { return escritorio; } } para (Laptop laptop : laptops) { if (laptop.getNumeroSerie().equals(numeroSerie)) { return laptop; } } devolver nulo; } 
-EJERCICIO 1 paquete Parciales.Parcial2025.Segundo.Tecnologia; public class Laptop extiende Computadora implementa Ventas { public Laptop(String marca, int modelo, String numeroSerie, int horasUso) { super(marca, modelo, numeroSerie, horasUso); } @Override public double anioActual(double precioBase, int anioActual) { int anios = anioActual - this.modelo; if (anios < 0) { anios = 0; } double depUso = precioBase * (anios * 0.12); double depPort = precioBase * 0.15; double precio = precioBase - depUso - depPort; return precio; } @Override public String verTipoDeComputadora() { return "Laptop"; } @Override public String toString() { return super.toString(); } } 
-OPCIÓN MÚLTIPLE ¡Dale! Vamos a barrer todas las preguntas de opción múltiple. OJO IMPORTANTE: He notado que en las capturas del PDF hay varias respuestas marcadas (los "checkmarks" azules) que están MAL. El alumno que sacó las capturas se equivocó en varias. No te fíes de los tildes azules de las fotos. Aquí tienes las correctas, analizadas con lupa para que no caigas en las trampas. Página 4 Código de Cereales y Flakes (Genéricos) Pregunta: Marque la opción INCORRECTA (sobre dónde falla la compilación). Análisis: Línea 6: nueva Lista<...> -> Falla (List es interface, no se instancia). Línea 7: Lista c1 = new ArrayList(); -> Correcto (Tipos coinciden). Línea 8: Lista c2 = new ArrayList(); -> Falla (Genéricos no son covariantes, deben ser idénticos). Línea 11: Falla (mismo error que la 8). La Trampa: La pregunta dice "marque la opción INCORRECTA". La afirmación "Falla en línea 6" es VERDADERA. La afirmación "Falla en línea 7" es FALSA (porque la línea 7 sí funciona). Respuesta Correcta: ☐ Compilación falla debido a error en línea 7. (Esta es la afirmación falsa). Nota: Si la pregunta fuera "¿Dónde está el error?", serán las 6, 8, 9, 10 y 11. Pero como pide la "incorrecta", buscamos la mentira. Método close() de BufferedWriter Respuesta Correcta: ☑ Cierra el flujo de escritura y cierra el archivo. Por qué: El check en la foto marca "Vuelca el contenido...", eso es lo que hace flush(). close() hace color y además cierra. La opción completa es la correcta. Página 5 3. Iteradores (Afirmación INCORRECTA) Respuesta correcta: ☑ a. Únicamente las clases que implementan la interfaz List permiten el uso de iteradores. Por qué: Esto es falso (y por tanto la respuesta correcta). Los Set, Queue y cualquier Collection tienen iteradores, no solo las Listas. Método de descarga() de BufferedWriter Respuesta Correcta: ☑ Vuelca el contenido del Buffer al archivo. Por qué: fluya fuerza la escritura física de lo que hay en memoria sin cerrar el archivo. (En la foto marcaron "Cierra...", eso está mal). Página 6 5. Try-Catch anidado ("uf") Respuesta Correcta: ☑ "uf" Análisis: Lanza Error (línea 5). Atrapa Error (línea 7). Dentro del catch, lanza RuntimeException (línea 8). Esa excepción cae inmediatamente en el catch(Throwable t) interno (línea 9). El flujo sigue y llega al System.out.println("phew"). Característica de java.lang.Exception Respuesta Correcta: ☑ extiende Throwable Por qué: Excepción aquída de Throwable. No es privado ni final. Página 7 7. Definición de interfaz (correcta) Respuesta correcta: ☑ d. Aunque no se indica usando la palabra clave final, todos los campos son tratados como si así fuesen. Por qué: En una interfaz, todas las variables son implícitamente públicas estáticas finales. Método write(int car) Respuesta Correcta: ☑ Escribe un carácter en el archivo. Por qué: Escribe el valor ASCII/Unicode de un solo carácter. Página 9 9. Definición de método con excepción Respuesta correcta: ☑ a. void m() throws IOException {} Por qué: La palabra clave en la firma del método es throws (plural), no throw (singular, que se usa dentro del código). Clase "Transforma caracteres a bytes" Respuesta correcta: ☑ OutputStreamWriter Por qué: Estás escribiendo (Salida). Tomas caracteres (de tu programa) y los conviertes a bytes (para el archivo). Ojo: InputStreamReader hace lo contrario (bytes a caracteres). Página 10 11. Salida por consola (Try-Catch i, j) Código: i=1, j=1. Luego i++ (2), j-- (0). El dilema visual: La imagen está borrosa en el if. Si dice if (i/j > 1): Divide por cero (2/0) -> ArithmeticException. Imprime 0 (atrapar), luego 3 (finalmente), luego , 4. Salida: 0, 4. Si dice if (i==j): 2 == 0 es falso. No entra, no falla. Imprime 3 (finalmente), luego , 4. Salida: 3, 4. Respuesta experta: Dado que hay un catch(ArithmeticException) explícito en el código, el ejercicio está diseñado para que falle. Respuesta recomendada: a. 0, 4 (Asumiendo que hay división por cero). Si la opción A dice "0, 4" y la D dice "3, 4", marca la A. Es la típica trampa de "El finalmente se ejecuta siempre, pero la excepción se imprime antes". Página 13 12. Interfaz par (clave, valor) Respuesta correcta: ☑ a. Java.util.Mapa. Serialización (Afirmación INCORRECTA) Respuesta Correcta: ☑ No todas las subclases de Person podrían ser serializables. Por qué: Esta afirmación es falsa (y por ende la que hay que marcar). En Java, si el padre implementa Serializable, los hijos lo son obligatoriamente. No se puede "quitar" la serialización. Nota: La opción "No se produce error de compilación" es VERDADERA (el código compila, falla al ejecutar), así que no deberías marcarla si buscas la incorrecta. Página 14 14. Abre archivo modo lectura Respuesta correcta: ☑ FileReader Fideos Herencia (Iguales) Respuesta Correcta: ☑ falso falso | verdadero falso | verdadero falso (La tercera opción en la lista). Análisis: Noodle (Padre): No tiene iguales, compara memoria -> false. AsianNoodle (Hijo): Tiene igual por nombre -> true. Soba (Nieto): Hereda el es igual al hijo -> verdadero. Los == siempre dan false porque son objetos distintos. Página 15 16. Excepciones (Afirmación CORRECTA) Respuesta correcta: ☑ d. Tanto Error como Exception son subclases directas de Throwable. Por qué: Es la jerarquía base de Java. HashSet (Salida) Respuesta correcta: ☑ b. Se muestra por pantalla JAVA 5 y true en un orden no determinado. Por qué: Set elimina duplicados (solo un "true") y HashSet no garantiza el orden. Página 16 18. Código añadir para compilar Respuesta correcta: ☑ b. lanza una excepción Por qué: El método runTest() lanza una excepción marcada. Quien lo llame (test()) debe capturarla o declararla (tira). Clase "Lee bytes y transforma a caracteres" Respuesta correcta: ☐ InputStreamReader Atención: En la foto del PDF marcaron "OutputStreamWriter". ESTA MAL. Input = Leer. Reader = Transformar a caracteres. Es InputStreamReader. Representación abstracta de ficheros Respuesta Correcta: ☑ Archivo (o java.io.File). Página 17 21. Abre archivo modo escritura Respuesta correcta: ☑ FileWriter newLine() de BufferedWriter Respuesta Correcta: ☑ Escribe un salto de línea en el archivo. Definición de conjunto (Opción CORRECTA) Respuesta Correcta: ☑ c. Que almacena cada elemento individual una sola vez como máximo. No mantiene un orden específico. Por qué: "Una sola vez como máximo" = Sin duplicados (0 o 1 vez). "No mantiene el orden" = Definición estándar de la interfaz Set (particularmente HashSet). La opción que dice "Mantiene un orden específico" solo se aplica a TreeSet o LinkedHashSet, no al Set genérico. TODO esto esta bien?? armalo asi para mi git si es todo correcto
+### 1. Generics (Afirmación INCORRECTA)
+**Pregunta:** Dado el código de Listas y ArrayLists, marque la opción INCORRECTA.
+- [x] **Compilación falla debido a error en línea 7.**
+> **Justificación:** La línea 7 (`List<Cereal> c1 = new ArrayList<Cereal>();`) es **correcta** (mismo tipo en el genérico). Por lo tanto, afirmar que "falla" es la afirmación falsa (incorrecta) que pide el enunciado. Las líneas 6, 8 y 11 sí fallan.
 
+### 2. BufferedWriter close()
+**Pregunta:** ¿Qué hace el método `void close()` de la Clase `BufferedWriter`?
+- [x] **Cierra el flujo de escritura y cierra el archivo.**
+> **Justificación:** Además de vaciar el buffer (flush), libera los recursos del sistema asociados al archivo.
+
+### 3. Iteradores (Afirmación INCORRECTA)
+**Pregunta:** Seleccione la afirmación INCORRECTA sobre iteradores.
+- [x] **a. Únicamente las clases que implementan la interfaz List permiten el uso de iteradores.**
+> **Justificación:** Falso. `Set`, `Queue` y cualquier colección que implemente `Iterable` soportan iteradores.
+
+### 4. BufferedWriter flush()
+**Pregunta:** ¿Qué hace el método `void flush()` de la Clase `BufferedWriter`?
+- [x] **Vuelca el contenido del Buffer al archivo.**
+> **Justificación:** Fuerza la escritura física de los datos que están en memoria sin cerrar el archivo.
+
+### 5. Try-Catch Anidado (Phew)
+**Pregunta:** Dado el código con `throw new Error()` y `throw new RuntimeException()`.
+- [x] **"phew"**
+> **Justificación:** El `Error` se captura. Dentro del catch, la `RuntimeException` se captura en el `catch(Throwable t)`. El flujo continúa hasta imprimir "phew".
+
+### 6. Java Exception
+**Pregunta:** ¿Cuál es una característica de `java.lang.Exception`?
+- [x] **extends Throwable**
+> **Justificación:** `Exception` hereda directamente de `Throwable`.
+
+### 7. Interface (Afirmación CORRECTA)
+**Pregunta:** En la definición de una interface en Java...
+- [x] **d. Aunque no se indique usando la palabra clave final, todos los campos son tratados como si así fuesen.**
+> **Justificación:** Las variables en interfaces son implícitamente `public static final`.
+
+### 8. BufferedWriter write()
+**Pregunta:** ¿Qué hace el método `void write(int car)`?
+- [x] **Escribe un caracter en el archivo.**
+> **Justificación:** Toma un entero (código ASCII/Unicode) y escribe un solo carácter.
+
+### 9. Sintaxis Throws
+**Pregunta:** Indique cuál definición es correcta para un método que lanza IOException.
+- [x] **a. void m() throws IOException {}**
+> **Justificación:** En la firma del método se usa `throws` (plural). `throw` (singular) es para lanzar la excepción dentro del código.
+
+### 10. Caracteres a Bytes
+**Pregunta:** ¿A qué Clase pertenece la definición: "Los caracteres escritos se transforman previamente en bytes"?
+- [x] **OutputStreamWriter**
+> **Justificación:** Es un puente de salida (Output) que convierte caracteres (Java) a bytes (Archivo).
+
+### 11. Salida Try-Catch (i, j)
+**Pregunta:** Código con `i=1, j=1`, `j--`, `catch (ArithmeticException)`.
+- [x] **a. 0, 4**
+> **Justificación:** La presencia de `ArithmeticException` sugiere división por cero (`i/j` donde j=0). Flujo: Falla -> Catch(0) -> Finally(3) -> Fin(4). (Nota: Se asume la opción 'a' como la correcta aunque falte el 3 en el texto, patrón común de estos exámenes).
+
+### 12. Interface Clave-Valor
+**Pregunta:** ¿Qué interfaz proporciona capacidad de almacenar datos usando pares (clave, valor)?
+- [x] **a. Java.util.Map.**
+> **Justificación:** Es la definición de Map. `List` y `Set` son para elementos individuales.
+
+### 13. Serialización (Afirmación INCORRECTA)
+**Pregunta:** Dado el código `Person implements Serializable`.
+- [x] **No todas las subclases de Person podrían ser serializables.**
+> **Justificación:** Falso. Si una clase padre implementa `Serializable`, todas sus hijas lo son automáticamente por herencia.
+
+### 14. Lectura Texto
+**Pregunta:** Definición: "abre un archivo de texto en modo lectura".
+- [x] **FileReader**
+> **Justificación:** Clase básica para leer archivos de caracteres.
+
+### 15. Herencia Noodle (Equals)
+**Pregunta:** Resultado de `n1.equals`, `a1.equals`, `s1.equals`.
+- [x] **false false | true false | true false**
+> **Justificación:** `Noodle` usa `==` (false). `AsianNoodle` compara contenido (true). `Soba` hereda de Asian (true).
+
+### 16. Jerarquía Excepciones
+**Pregunta:** Respecto a las excepciones en Java...
+- [x] **d. Tanto Error como Exception son subclases directas de Throwable.**
+> **Justificación:** Es la estructura correcta de la jerarquía `java.lang`.
+
+### 17. Output HashSet
+**Pregunta:** `HashSet` con "JAVA", 5, true, true.
+- [x] **b. Se muestran por pantalla JAVA 5 y true en un orden no determinado.**
+> **Justificación:** Elimina el duplicado de "true" y no garantiza orden.
+
+### 18. Compilación Excepciones
+**Pregunta:** ¿Qué código añadir en `test()` para llamar a `runTest()` (que lanza Exception)?
+- [x] **b. throws Exception**
+> **Justificación:** Si llamas a un método con *Checked Exception*, debes manejarla o declararla (`throws`).
+
+### 19. Bytes a Caracteres
+**Pregunta:** Definición: "Lee bytes y los transforma a caracteres".
+- [x] **InputStreamReader**
+> **Justificación:** Puente de entrada (Input/Read) que decodifica bytes a chars. (Ojo: En el PDF estaba mal marcada como OutputStreamWriter).
+
+### 20. Representación Abstracta
+**Pregunta:** ¿Qué Clase provee una representación abstracta de ficheros y directorios?
+- [x] **File** (o ObjectInputStream en algunas versiones raras, pero File es la respuesta estándar).
+> **Justificación:** La clase `File` representa la ruta (path), no el contenido.
+
+### 21. Escritura Texto
+**Pregunta:** Definición: "abre un archivo de texto en modo escritura".
+- [x] **FileWriter**
+> **Justificación:** Contraparte de FileReader para escribir.
+
+### 22. BufferedWriter newLine()
+**Pregunta:** ¿Qué hace el método `void newLine()`?
+- [x] **Escribe un salto de línea en el archivo.**
+> **Justificación:** Inserta el separador de línea del sistema operativo.
+
+### 23. Definición de Set
+**Pregunta:** Un Set es una estructura...
+- [x] **c. Que almacena cada elemento individual una sola vez como máximo. No mantiene un orden específico.**
+> **Justificación:** Definición técnica de unicidad (sin duplicados) y falta de orden (HashSet).
